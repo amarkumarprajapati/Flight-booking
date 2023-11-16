@@ -23,9 +23,9 @@ const Adddetails = () => {
   };
   // send Data
   const getSearch = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const response = await fetch("http://localhost:6000/api/searchdatanew", {
+      const response = await fetch("http://localhost:2000/api/searchdatanew", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,10 +46,10 @@ const Adddetails = () => {
 
   // getdata
   const [getalldata, setGetalldata] = useState([]);
-  
+
   const showalldata = async () => {
     try {
-      const responcedata = await axios.get(`http://localhost:6000/api/Time`);
+      const responcedata = await axios.get(`http://localhost:2000/api/Time`);
       setGetalldata(responcedata.data);
     } catch (error) {
       console.error("show data error", error);
