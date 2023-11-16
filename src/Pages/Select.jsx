@@ -9,7 +9,7 @@ const Select = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const getalldata = await axios.get("http://localhost:1000/api/Time");
+        const getalldata = await axios.get("http://localhost:6000/api/Time");
         setBackData(getalldata.data);
       } catch (error) {
         console.log("error", error);

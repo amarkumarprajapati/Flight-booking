@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Main, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Adddetails from "./Pages/Adddetails";
 import Conformation from "./Pages/Conformation";
@@ -8,14 +8,13 @@ import Select from "./Pages/Select";
 import Selectclass from "./Pages/Selectclass";
 import Services from "./Pages/Services";
 import Thankyou from "./Pages/Thankyou";
-import Navbar from './Components/Navbar'
-import './index.css'
-
+import Navbar from "./Components/Navbar";
+import "./index.css";
 
 const Flight = () => {
   return (
     <>
-      <Router>
+      <Main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/adddet" element={<Adddetails />} />
@@ -25,9 +24,9 @@ const Flight = () => {
           <Route path="/seleclass" element={<Selectclass />} />
           <Route path="/services" element={<Services />} />
           <Route path="/thank" element={<Thankyou />} />
-          <Route path='/Navbar' element={<Navbar/>}/>
+          <Route path="/Navbar" element={<Navbar />} />
         </Routes>
-      </Router>
+      </Main>
     </>
   );
 };

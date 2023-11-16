@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   // typing
-  const [searchdata, setSearchData] = useState([]);
   const [data1, setData] = useState({
     fromdata: "",
     todata: "",
@@ -21,7 +21,7 @@ const Home = () => {
   const submitdatanew = async (e) => {
     e.preventDefault();
     try {
-      const getalldata = await fetch("http://localhost:3000/api/front", {
+      const getalldata = await fetch("http://localhost:6000/api/front", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,35 @@ const Home = () => {
     }
   };
 
-// onclik
+  // onClick Show details
+
+  const [Search, setSearch] = useState({
+    Afghanistan: "",
+    Albania: "",
+    Algeria: "",
+    Andorra: "",
+    Angola: "",
+    Antigua: "",
+    Argentina: "",
+    Armenia: "",
+    Australia: "",
+    Austria: "",
+    Azerbaijan: "",
+    Bahamas: "",
+    Bahrain: "",
+    Bangladesh: "",
+    Barbados: "",
+    Belarus: "",
+    Belgium: "",
+    Belize: "",
+    Benin: "",
+    Bhutan: "",
+  });
+
+  const searchvalue = (e) => {
+    const { name, value } = e.target;
+    setSearch({ ...Search, [name]: value });
+  };
 
   return (
     <div>
@@ -47,53 +75,64 @@ const Home = () => {
         <h1>Best deals are waiting for you</h1>
       </div>
       <div className="nextdiv">
-        <div className="allinput">
-          <label htmlFor="">From</label>
-          <br />
-          <input
-            type="text"
-            name="fromdata"
-            id="fromdata"
-            onChange={changedata}
-          />
-        </div>
-        <div className="allinput">
-          <label htmlFor="">To</label>
-          <br />
-          <input type="text" name="todata" id="todata" onChange={changedata} />
-        </div>
-        <div className="allinput">
-          <label htmlFor="">Departure</label>
-          <br />
-          <input
-            type="date"
-            name="departuredata"
-            id="departuredata"
-            onChange={changedata}
-          />
-        </div>
-        <div className="allinput">
-          <label htmlFor="">Return</label>
-          <br />
-          <input
-            type="date"
-            name="returndatedata"
-            id="returndatedata"
-            onChange={changedata}
-          />
-        </div>
-        <div className="allinput">
-          <div>
-            <button className="buttoninput" onClick={submitdatanew}>
-              Search
-            </button>
+        <form action="">
+          <div className="allinput">
+            <label htmlFor="">From</label>
+            <br />
+            <input
+              onChange={searchvalue}
+              type="search"
+              class="form-control rounded"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+            {Object.keys(Search).map((country) => (
+              <div></div>
+            ))}
           </div>
-          <div className="avalable">
-            <button href="/adddet" onClick={()=>{window.open('/adddet','_self')}} className="buttoninput">
-              Avalable flight
-            </button>
+          <div className="allinput">
+            <label htmlFor="">To</label>
+            <br />
+            <input
+              type="text"
+              name="todata"
+              id="todata"
+              onChange={changedata}
+            />
           </div>
-        </div>
+          <div className="allinput">
+            <label htmlFor="">Departure</label>
+            <br />
+            <input
+              type="date"
+              name="departuredata"
+              id="departuredata"
+              onChange={changedata}
+            />
+          </div>
+          <div className="allinput">
+            <label htmlFor="">Return</label>
+            <br />
+            <input
+              type="date"
+              name="returndatedata"
+              id="returndatedata"
+              onChange={changedata}
+            />
+          </div>
+          <div className="allinput">
+            <div>
+              <button className="buttoninput" onClick={submitdatanew}>
+                Search
+              </button>
+            </div>
+            <div className="avalable">
+              <Link to="adddet">
+                <button className="buttoninput">Avalable flight</button>
+              </Link>
+            </div>
+          </div>
+        </form>
       </div>
       <div className="poplar">
         <h2>Popular Route</h2>

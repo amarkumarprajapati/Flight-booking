@@ -11,8 +11,7 @@ const Adddetails = () => {
     from: "",
     to: "",
     departure: "",
-    return: "",
-    code: "",
+    returndate: "",
   });
 
   const onchangedata = (e) => {
@@ -23,10 +22,10 @@ const Adddetails = () => {
     });
   };
   // send Data
-  const getSearch = async () => {
-    e.preventDefult();
+  const getSearch = async (e) => {
+    e.preventDefault()
     try {
-      const response = await fetch("http://localhost:1000/api/searchdata", {
+      const response = await fetch("http://localhost:6000/api/searchdatanew", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,9 +46,10 @@ const Adddetails = () => {
 
   // getdata
   const [getalldata, setGetalldata] = useState([]);
+  
   const showalldata = async () => {
     try {
-      const responcedata = await axios.get(`http://localhost:1000/api/Time`);
+      const responcedata = await axios.get(`http://localhost:6000/api/Time`);
       setGetalldata(responcedata.data);
     } catch (error) {
       console.error("show data error", error);
@@ -102,8 +102,8 @@ const Adddetails = () => {
           <h5 htmlFor="">Return</h5>
           <input
             type="date"
-            name="return"
-            id="return"
+            name="returndate"
+            id="returndate"
             value={searchQuery.return}
             onChange={onchangedata}
           />

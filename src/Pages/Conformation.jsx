@@ -9,7 +9,7 @@ const Conformation = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:1000/api/Time");
+        const response = await axios.get("http://localhost:6000/api/Time");
         setShowdata(response.data);
       } catch (error) {
         console.error("Error:", error);

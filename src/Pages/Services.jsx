@@ -9,7 +9,7 @@ const Services = () => {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const backdata = await axios.get(`http://localhost:1000/api/Time`);
+        const backdata = await axios.get(`http://localhost:6000/api/Time`);
         setBackEnddata(backdata.data);
       } catch (error) {
         console.log("error", error);
